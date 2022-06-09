@@ -1,6 +1,6 @@
 <template>
   <div class="card">
-      <h2>Titolo</h2>
+      <h2>{{Film.title}}</h2>
       <h3>{{Film.original_title}}</h3>
       <p>{{Film.original_language}}</p>
       <p>{{Film.vote_average}}</p>
