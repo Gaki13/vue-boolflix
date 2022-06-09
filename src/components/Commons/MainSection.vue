@@ -9,7 +9,7 @@
 <script>
 import axios from 'axios'
 import CardElement from './CardElement.vue'
-// import data from '../../shared/data'
+import data from '../../shared/data'
 
 export default {
     name: 'MainSection',
@@ -19,14 +19,15 @@ export default {
     data() {
         return{
             films: [],
-            // data,
+            data,
+            
         };
     },
     created() {
         axios.get('https://api.themoviedb.org/3/search/movie', {
             params: {
                 api_key: 'ee7e3a1176734bbf1587f1f1f990d694',
-                query: 'Ritorno',
+                query: 'vita',
                 language: 'it-IT'
             }
         }) .then((response) => {
