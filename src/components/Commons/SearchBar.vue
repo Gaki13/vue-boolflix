@@ -17,6 +17,7 @@ export default {
         return{
             searchText: '',
             data,
+            isoFlags: ["it", "en", "es", "fr", "de"]
         };
     },
     methods: {
@@ -30,6 +31,10 @@ export default {
         }) .then((response) => {
             this.data.films = response.data.results;
             this.searchText = ''
+            if(!this.language.include(this.isoFlags)){
+                this.language === "vi"
+                console.log(this.language);
+            }
             console.log(response);
         }).catch((error) => {
             console.log(error);
