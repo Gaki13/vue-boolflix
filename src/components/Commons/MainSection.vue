@@ -1,13 +1,16 @@
 <template>
   <section>
-      <ul>
-          <li v-for="film in films" :key="film.id"><CardElement :Film="film"/></li>
-      </ul>    
+      <div class="container">
+            <ul>
+                <h1>Films trovati:</h1>
+                <li v-for="film in data.films" :key="film.id"><CardElement :Film="film"/></li>
+            </ul>   
+      </div>
+        
   </section>
 </template>
 
 <script>
-import axios from 'axios'
 import CardElement from './CardElement.vue'
 import data from '../../shared/data'
 
@@ -18,24 +21,8 @@ export default {
     },
     data() {
         return{
-            films: [],
             data,
-            
         };
-    },
-    created() {
-        axios.get('https://api.themoviedb.org/3/search/movie', {
-            params: {
-                api_key: 'ee7e3a1176734bbf1587f1f1f990d694',
-                query: 'vita',
-                language: 'it-IT'
-            }
-        }) .then((response) => {
-            this.films = response.data.results;
-            console.log(response);
-        }).catch((error) => {
-            console.log(error);
-        });
     },
 }
 </script>
