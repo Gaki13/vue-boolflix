@@ -1,9 +1,9 @@
 <template>
   <div class="card">
-      <h2>{{Film.title}}</h2>
-      <h3>{{Film.original_title}}</h3>
-      <p >Lingua originale: <lang-flag :iso="(Film.original_language)"/></p>
-      <p>Voto: {{Film.vote_average}}</p>
+      <h2>{{Media.title || Media.name }}</h2>
+      <h3>{{Media.original_title || Media.original_name}}</h3>
+      <p >Lingua originale: <lang-flag :iso="(Media.original_language)"/></p>
+      <p>Voto: {{Media.vote_average}}</p>
   </div>
 </template>
 
@@ -12,19 +12,11 @@ import LangFlag from 'vue-lang-code-flags';
 
 export default {
     name: 'CardElement',
-    data(){
-        return{
-            
-        }
-    },
     props: {
-        Film: Object,
+        Media: Object,
     },
     components: {
         LangFlag,
-    },
-    methods:{  
-        
     },
 }
 </script>

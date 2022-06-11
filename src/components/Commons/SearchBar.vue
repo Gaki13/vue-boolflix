@@ -17,7 +17,6 @@ export default {
         return{
             searchText: '',
             data,
-            isoFlags: ["it", "en", "es", "fr", "de"]
         };
     },
     methods: {
@@ -28,18 +27,28 @@ export default {
                 query: this.searchText,
                 language: 'it-IT'
             }
-        }) .then((response) => {
-            this.data.films = response.data.results;
-            this.searchText = ''
-            if(!this.language.include(this.isoFlags)){
-                this.language === "vi"
-                console.log(this.language);
+            }) .then((response) => {
+                data.films = response.data.results;
+                this.searchText = ''
+             console.log(response);
+            }).catch((error) => {
+                console.log(error);
+            })
+
+            axios.get('https://api.themoviedb.org/3/search/tv', {
+            params: {
+                api_key: 'ee7e3a1176734bbf1587f1f1f990d694',
+                query: this.searchText,
+                language: 'it-IT'
             }
-            console.log(response);
-        }).catch((error) => {
-            console.log(error);
-        })
-        }
+            }) .then((response) => {
+                data.series = response.data.results;
+                this.searchText = ''
+             console.log(response);
+            }).catch((error) => {
+                console.log(error);
+            })
+       }
     },
 }
 </script>
