@@ -1,10 +1,10 @@
 <template>
   <div class="card">
         <img :src="getUrl(Media.poster_path)" >
-      <h2>{{Media.title || Media.name }}</h2>
-      <h3>{{Media.original_title || Media.original_name}}</h3>
-      <p >Lingua originale: <lang-flag :iso="(Media.original_language)"/></p>
-      <p>Voto: {{Media.vote_average}}</p>
+        <h2>{{Media.title || Media.name }}</h2>
+        <h3>{{Media.original_title || Media.original_name}}</h3>
+        <p >Lingua originale: <lang-flag :iso="(Media.original_language)"/></p>
+        <h6>Voto: <span v-html="voteStar(Media.vote_average)"></span> </h6>
   </div>
 </template>
 
@@ -17,15 +17,25 @@ export default {
         Media: Object,
     },
     components: {
-        LangFlag,
+        LangFlag,    
     },
     methods: {
         getUrl(url){
             return `https://image.tmdb.org/t/p/w185/${url}`
+        },
+        voteStar(vote){
+            let StarsHtml = ' ';
+            for (let i = 0; i < Math.ceil(vote / 2); i++) {
+                StarsHtml += '<font-awesome-icon icon="fa-solid fa-star"/>';
+            }
+            return StarsHtml;
         }
+
     }
 }
 </script>
 <style lang="scss" scoped>
-
+    .star{
+        color: red;
+    }
 </style>
