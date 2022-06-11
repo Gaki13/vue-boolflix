@@ -4,7 +4,7 @@
         <h2>{{Media.title || Media.name }}</h2>
         <h3>{{Media.original_title || Media.original_name}}</h3>
         <p >Lingua originale: <lang-flag :iso="(Media.original_language)"/></p>
-        <h6>Voto: <span v-html="voteStar(Media.vote_average)"></span> </h6>
+        <h6>Voto: <span v-html="voteStar(Media.vote_average)"></span><font-awesome-icon icon="fa-solid fa-star" /></h6>
   </div>
 </template>
 
