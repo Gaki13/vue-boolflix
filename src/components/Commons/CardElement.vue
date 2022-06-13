@@ -4,7 +4,7 @@
         <h2>{{Media.title || Media.name }}</h2>
         <h3>{{Media.original_title || Media.original_name}}</h3>
         <p >Lingua originale: <lang-flag :iso="(Media.original_language)"/></p>
-        <h6>Voto: <span v-html="voteStar(Media.vote_average)"></span><font-awesome-icon icon="fa-solid fa-star" /></h6>
+        <h6>Voto: <font-awesome-icon icon="fa-solid fa-star" v-for=" vote in voteStar(Media.vote_average)"  :key="vote"/></h6>
   </div>
 </template>
 
@@ -24,11 +24,7 @@ export default {
             return `https://image.tmdb.org/t/p/w185/${url}`
         },
         voteStar(vote){
-            let StarsHtml = ' ';
-            for (let i = 0; i < Math.ceil(vote / 2); i++) {
-                StarsHtml += '<font-awesome-icon icon="fa-solid fa-star"/>';
-            }
-            return StarsHtml;
+            return Math.ceil(vote / 2) ;
         }
 
     }
