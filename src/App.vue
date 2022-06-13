@@ -20,4 +20,7 @@ export default {
 
 <style lang="scss">
   @import url(./assets/global.scss);
+  #app{
+    background-color: black;
+  }
 </style>
